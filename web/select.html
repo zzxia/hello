@@ -1,0 +1,54 @@
+<html>
+<head><title>hello world</title></head>
+<script language="JavaScript">
+    var xmlHttp;
+    function createXMLHttp(){
+        if(window.XMLHttpRequest){
+            xmlHttp=new XMLHttpRequest();
+        }else{
+            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    }
+    function getCity(){
+        createXMLHttp();
+        xmlHttp.open("POST","allarea.xml");
+        //xmlHttp.open("POST","content.html");
+        xmlHttp.onreadystatechange=getCityCallback;
+        xmlHttp.send(null);   //发送请求，不传递任何参数
+        }
+    function getCityCallback(){
+        if(xmlHttp.readyState==4){
+            if(xmlHttp.status==200){
+                var allarea=xmlHttp.responseXML.getElementsByTagName("allarea")[0].childNodes;
+                var select=document.getElementById("city");
+                select.length=1;                //显示一个内容
+                select.options[0].selected=true;//设置第一个为选中状态
+               //循环 all下的子节点
+               for (var i=0;i < allarea.length;i++){
+                   var area=allarea[i];
+                   //创建option对象
+                   var option=document.createElement("option");
+                   //取得每个area中的id无素内容
+                   var id=area.getElementsByTagName("id")[0].firstChild.nodeValue;
+                   //取得每个area中的id无素内容
+                   var title=area.getElementsByTagName("title")[0].firstChild.nodeValue;
+                  //在option元素中设置显示的内容
+                   option.setAttribute("value",id);
+                   //在option中添加显示的文本内容
+                   option.appendChild(document.createTextNode(title));
+                   //在下拉列表框中加入option属性
+                   select.appendChild(option);
+               }
+            }
+        }
+    }
+</script>
+<body onload="getCity()">
+<form action="" method="post">
+    请选择城市：
+    <select name="city">
+        <option value='0'>-请选择城市-</option>
+    </select>
+</form>
+</body>
+</html>
