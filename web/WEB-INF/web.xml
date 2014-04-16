@@ -5,14 +5,7 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
            version="2.5">
   
-    <servlet>
-        <servlet-name>CheckServlet</servlet-name>
-        <servlet-class>com.taobao.ak.CheckServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CheckServlet</servlet-name>
-        <url-pattern>/CheckServlet</url-pattern>
-    </servlet-mapping>
+
     <servlet>
         <servlet-name>Hello</servlet-name>
         <servlet-class>com.taobao.tc.Hello</servlet-class>
@@ -22,12 +15,5 @@
         <url-pattern>/Hello</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>Fuck</servlet-name>
-        <servlet-class>com.taobao.test.Fuck</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Fuck</servlet-name>
-        <url-pattern>/Fuck</url-pattern>
-    </servlet-mapping>
+
 </web-app>
