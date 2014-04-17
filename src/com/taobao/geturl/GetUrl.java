@@ -24,8 +24,7 @@ public class GetUrl extends HttpServlet {
             throws ServletException,IOException {
        // request.setCharacterEncoding("BGK");
         response.setContentType("text/html");
-        //String userid=request.getParameter("userid");
-        String strUrl = "http://hrtsea.com/?p=9819";
+        String strUrl=request.getParameter("url");
         URL url = new URL(strUrl);
         HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();
         urlCon.setConnectTimeout(5000);

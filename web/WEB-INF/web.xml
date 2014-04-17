@@ -7,12 +7,12 @@
   
 
     <servlet>
-        <servlet-name>Hello</servlet-name>
-        <servlet-class>com.taobao.tc.Hello</servlet-class>
+        <servlet-name>GetUrl</servlet-name>
+        <servlet-class>com.taobao.geturl.GetUrl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Hello</servlet-name>
-        <url-pattern>/Hello</url-pattern>
+        <servlet-name>GetUrl</servlet-name>
+        <url-pattern>/geturl</url-pattern>
     </servlet-mapping>
 
 
