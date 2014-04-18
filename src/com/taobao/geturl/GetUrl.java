@@ -22,23 +22,24 @@ public class GetUrl extends HttpServlet {
     }
     public void doPost(HttpServletRequest request,HttpServletResponse response)
             throws ServletException,IOException {
-     //   request.setCharacterEncoding("GBK");
-        response.setContentType("text/html");
-    //    String strUrl=request.getParameter("url");
-        String strUrl="http://hrtsea.com/?p=9819";
+        request.setCharacterEncoding("gbk");
+        response.setContentType("text/html;charset=gbk");
+        PrintWriter out=response.getWriter();
+        String strUrl=request.getParameter("url");
+
         URL url = new URL(strUrl);
         HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();
         urlCon.setConnectTimeout(5000);
         urlCon.setReadTimeout(5000);
         InputStream in = urlCon.getInputStream();
-        PrintWriter out=response.getWriter();
-        out.print(strUrl);
-        int current=in.read();
-        while(current!=-1){
-            out.write(current);
-            current=in.read();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, "gbk"));
+        StringBuffer pageBuffer = new StringBuffer();
+        String line="";
+        while ((line = reader.readLine()) != null)
+        {
+            pageBuffer.append(line);
         }
-        in.close();
+        out.println(pageBuffer.toString());
         out.close();
     }
 
